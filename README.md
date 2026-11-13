@@ -39,22 +39,35 @@
 
 ## 安装
 
-```bash
-# 从本地路径安装
-dsh plugin --profile desktop add C:\path\to\dsh-maestro
+### 方式一：自定义插件市场一键安装（推荐）
 
-# 或先构建再安装
+1. 打开 DeepSeek Harness 并完成初始化。进入 **「插件」**，点击「实验性插件」旁的 **「更多」**，启用 **「自定义插件市场」**。
+2. 进入 **「发现 → 添加索引源」**，填入以下社区索引地址：
+   ```text
+   https://jolin1314joker.github.io/purge-proxy-bridge/index.json
+   ```
+3. 在列表中找到 **DSH Maestro（多智能体编排）**，核对来源为 `jolin1314joker/dsh-maestro`、包名为 `@local/dsh-maestro`，确认后点击安装。
+4. 安装完成后**完全重启** DeepSeek Harness，新建会话时在预设菜单中选择 **团队模式** 即可使用。
+
+### 方式二：本地源码构建安装（适合二次开发）
+
+```bash
+# 克隆仓库并构建产物
+git clone https://github.com/jolin1314joker/dsh-maestro.git
+cd dsh-maestro
 pnpm install && pnpm build
+
+# 添加到指定 profile
 dsh plugin --profile desktop add C:\path\to\dsh-maestro
 ```
 
-安装后重启 DeepSeek Harness，新建会话时在预设菜单选择 **团队模式**。
+安装后完全重启 DeepSeek Harness，新建会话时在预设菜单选择 **团队模式**。
 
 ## 用法
 
 选好模型（它会成为队长，全程不变），然后直接用自然语言描述目标：
 
-```
+```text
 用团队模式重构这个项目的认证模块，先拆任务再并行实现。
 ```
 
